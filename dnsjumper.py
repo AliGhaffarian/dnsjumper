@@ -21,7 +21,7 @@ class ACTION:
 
 
 
-def dns_action(ip : ipaddress.IPv4Address, action : ACTION = ACTION.SET_DNS):
+def dns_action(ip : ipaddress.IPv4Address, action : ACTION = ACTION.SET_DNS)->int:
     
     command = "" 
     if action == ACTION.SET_DNS:
@@ -35,6 +35,7 @@ def dns_action(ip : ipaddress.IPv4Address, action : ACTION = ACTION.SET_DNS):
 
     if(error_code):
         logger.error(f"error code of {command} : {error_code}")
+    return error_code
     
 
 def handle_args():
