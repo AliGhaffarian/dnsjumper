@@ -1,3 +1,4 @@
+#!/bin/python3
 import ipaddress
 import sys
 import os
@@ -25,10 +26,10 @@ def dns_action(ip : ipaddress.IPv4Address, action : ACTION = ACTION.SET_DNS)->in
     
     command = "" 
     if action == ACTION.SET_DNS:
-        command = f"echo \"nameserver\t{ip.__str__()}\" > {RESOLV_CONF_PATH}"
+        command = f"sudo echo \"nameserver\t{ip.__str__()}\" > {RESOLV_CONF_PATH}"
         logger.debug(command)
     elif action == ACTION.ADD_DNS:
-        command = f"echo \"nameserver\t{ip.__str__()}\" >> {RESOLV_CONF_PATH}"
+        command = f"sudo echo \"nameserver\t{ip.__str__()}\" >> {RESOLV_CONF_PATH}"
         logger.debug(command)
 
     error_code = os.system(command)
